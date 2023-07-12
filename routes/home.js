@@ -42,6 +42,13 @@ Router.post("/edit/:id", (req, res) => {
         console.log("error")
     })
 })
+Router.get("/delete/:id", (req, res) => {
+    User.findByIdAndDelete({ _id: req.params.id }, req.body).then((docs) => {
+        res.redirect("/show")
+    }).catch((err) => {
+        console.log("error")
+    })
+})
 
 module.exports = Router
 

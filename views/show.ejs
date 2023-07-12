@@ -23,7 +23,7 @@
                 <td><%- singleuser._id   %></td>
                 <td><%- singleuser.name  %></td>
                 <td><%- singleuser.email  %></td>
-                <td><a href="/edit/<%-  singleuser._id %>">view</a>&nbsp;<a href="/delete">delete</a></td>
+                <td><a href="/edit/<%-  singleuser._id %>">view</a>&nbsp;<a href="/delete/<%- singleuser._id %>">delete</a></td>
             </tr>
             
         <% }) %>
