@@ -2,17 +2,36 @@ const express = require("express")
 const Router = express.Router()
 const User = require("../models/user")
 let formidable = require("formidable")
+var fs = require('fs');
+var path = require('path');
 Router.get("/", (req, res) => {
     res.render("index")
 })
+
+
+//form upload --------------------------------------------------------->
+Router.post('/', (req, res) => {
+    const form = new formidable.IncomingForm()
+    form.parse(req)
+    form.on("fileBegin",(name,file)=>{
+        file.filepath=__dirname+"/uploadofimage/"+file.originalFilename
+    })
+    res.sendFile(__dirname+"/image.html")
+
+});
+Router.get("/form", (request, response) => {
+    response.sendFile(path.join(__dirname, "/image.html"))
+})
+
+//--------------------------------------------------------------------------------->
+
 Router.post("/add", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const idno = req.body.idno;
     const image = req.body.image;
-    
-    const user = new User({ firstname: firstname, lastname:lastname, email: email, idno:idno ,image:image})
+    const user = new User({ firstname: firstname, lastname: lastname, email: email, idno: idno, image: image })
     const form = new formidable.IncomingForm()
 
     console.log(user)

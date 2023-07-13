@@ -14,10 +14,12 @@
 
 ul  {
     list-style-type: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #3072f7;
+    width: 50%;
+ 
 }
 
 li {
@@ -52,14 +54,14 @@ table {
     margin: 40px auto;
     /* margin: 20px auto; */
     font-family: sans-serif;
+   
 }
-
 th, td {
     padding: 10px;
 }
 
 th  {
-    background-color: #404040;
+    background-color: #74a5dd;
     padding: 20px 0;
     color: white;
 }
@@ -75,7 +77,11 @@ span {
 }
 
 
-.blue , .pink {
-    background-color: black;
+.blue {
+    background-color: rgb(30, 208, 214);
+    border: 1px solid black;
+}
+.pink{
+    background-color: red;
     border: 1px solid black;
 }
