@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
+    <link rel="stylesheet" href="css/input-update.css">
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="http://localhost:9000/">Home Page</a><br><br>
-        </li>
-        <li><a href="/show">Show Db Data</a><br><br></li>
-    </ul>
-    <form action="/add" method="post">
-        <input  type="text" name="name" placeholder="enter name"  /><br>
-        <input  type="email" name="email" placeholder="enter email" /><br>
-        <button type="submit">Save</button>
-    </form>
-</body>
 
+    <div class="navbar">
+        <ul>
+            <li><a class="" href="http://localhost:9001/">Home</a></li>
+            <li><a href="/show">Show</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <form action="/add" method="post">
+            <div class="form">
+                <div class="title">Post Data</div>
+                <div class="input-container ic1">
+                    <input type="text" name="firstname" class="input" placeholder="Enter FirstName" class="placeholderclass">
+                    <div class="cut"></div>
+            
+                </div>
+                <div class="input-container ic1">
+                    <input type="text" name="lastname" class="input" placeholder="Enter LastName" class="placeholderclass">
+                    <div class="cut"></div>
+                 
+                </div>
+                <div class="input-container ic2">
+                    <input type="text" name="email" class="input" placeholder="Enter Email" class="placeholderclass">
+                    <div class="cut cut-short"></div>
+                    
+                </div>
+                <div class="input-container ic1">
+                    <input type="text" name="idno" class="input" placeholder="Enter idno" class="placeholderclass">
+                    <div class="cut"></div>
+                    
+                </div> 
+                <div class="input-container ic1">
+                    <input type="file" name="image" class="input" placeholder=" " class="placeholderclass">
+                    <div class="cut"></div>
+                
+                </div>
+                <button type="submit" class="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
 </html>

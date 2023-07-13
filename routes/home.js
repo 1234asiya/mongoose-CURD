@@ -1,16 +1,22 @@
 const express = require("express")
 const Router = express.Router()
 const User = require("../models/user")
-
+let formidable = require("formidable")
 Router.get("/", (req, res) => {
     res.render("index")
 })
 Router.post("/add", (req, res) => {
-    const name = req.body.name;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
     const email = req.body.email;
-    console.log(name, email);
-    const user = new User({ name: name, email: email })
+    const idno = req.body.idno;
+    const image = req.body.image;
+    console.log(image)
+    const user = new User({ firstname: firstname, lastname:lastname, email: email, idno:idno ,image:image})
+    const form = new formidable.IncomingForm()
     console.log(user)
+    console.log(user.image)
+    
     user.save().then(() => {
         res.redirect("/")
     })
@@ -18,7 +24,6 @@ Router.post("/add", (req, res) => {
             console.log(err)
         })
 })
-
 Router.get("/show", (req, res) => {
     User.find({}).then((docs) => {
         res.render("show", {
@@ -27,13 +32,11 @@ Router.get("/show", (req, res) => {
     }).catch((err) => {
         console.log(err)
     })
-
 })
 Router.get("/edit/:id", (req, res) => {
     User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }).then((docs) => {
-        res.render("edit", { edituserdata: docs })}).catch((err) => { console.log(err) })
-
-
+        res.render("edit", { edituserdata: docs })
+    }).catch((err) => { console.log(err) })
 })
 Router.post("/edit/:id", (req, res) => {
     User.findByIdAndUpdate({ _id: req.params.id }, req.body).then((docs) => {

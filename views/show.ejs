@@ -4,32 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/show-table.css">
 </head>
 <body>
-    
-        <table>
-            <thead>
-                <tr>
-                    <td>id</td>
-                    <td>name</td>
-                    <td>email</td>
-                    <td>Operations</td>
-                </tr>
-            </thead>
-            <tbody>
-       
-        <% showuserdetails.forEach((singleuser)=>{%>
+    <div class="navbar">
+        <ul>
+            <li><a class="" href="http://localhost:9001/">Home</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li><a href="/show">Show</a></li>
+        </ul>
+    </div>
+
+    <table>
+        <thead>
             <tr>
-                <td><%- singleuser._id   %></td>
-                <td><%- singleuser.name  %></td>
-                <td><%- singleuser.email  %></td>
-                <td><a href="/edit/<%-  singleuser._id %>">view</a>&nbsp;<a href="/delete/<%- singleuser._id %>">delete</a></td>
+                <th>MongoId</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>IdNo</th>
+                <th>image</th>
+                <th>Operations</th>
             </tr>
-            
-        <% }) %>
-               
-            </tbody>
-        </table>
- 
+        </thead>
+        <tbody>
+           <% showuserdetails.forEach((student) => { %>
+            <tr>
+                <td><%- student._id %></td>
+                <td><%- student.firstname %></td>
+                <td><%- student.lastname %></td>
+                <td><%- student.email %></td>
+                <td><%- student.idno %></td>
+                <td><%- student.image %></td>
+                <td>
+                    <a href="/edit/<%= student._id %>">
+                        <span class="blue">View</span>
+                    </a>
+                    <a href="/delete/<%= student._id %>">
+                        <span class="pink">Delete</span>
+                    </a>
+                </td>
+            </tr>
+           <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>

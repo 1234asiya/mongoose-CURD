@@ -1,15 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit</title>
+    <link rel="stylesheet" href="/css/input-update.css">
 </head>
 <body>
-    <form action="#" method="post">
-        <input type="text" name="name" value=" <%- edituserdata.name %>"/><br><br>
-        <input type="text" name="email" value="<%- edituserdata.email %>"/><br><br>
-        <button type="submit">Update</button>
-    </form>
+
+    <div class="navbar">
+        <ul>
+            <li><a class="" href="http://localhost:9001/">Home</a></li>
+            <li><a href="/show">Show</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <form action="#" method="post">
+            <div class="form">
+                <div class="title">Update data</div>
+                <div class="input-container ic1">
+                    <input type="text" name="firstname" class="input" value=" <%- edituserdata.firstname %>">
+                    <div class="cut"></div>
+                  
+                </div>
+                <div class="input-container ic2">
+                    <input type="text" name="lastname" class="input" value=" <%- edituserdata.lastname %>">
+                    <div class="cut cut-short"></div>
+
+                </div>
+                <div class="input-container ic2">
+                    <input type="text" name="email" class="input" value=" <%- edituserdata.email %>">
+                    <div class="cut cut-short"></div>
+       
+                </div>
+                <div class="input-container ic2">
+                    <input type="text" name="idno" class="input" value=" <%- edituserdata.idno %>">
+                    <div class="cut cut-short"></div>
+                </div>
+                <div class="input-container ic2">
+                    <input type="file" name="image" class="input" value=" <%- edituserdata.image %>">
+                    <div class="cut cut-short"></div>
+                </div>
+                <button type="submit" class="submit">Save</button>
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>

@@ -2,6 +2,7 @@ const express=require("express")
 const bodyParser=require("body-parser")
 const mongoose=require("mongoose")
 const homeRoute=require("./routes/home")
+
 const app=express();
 const PORT=9001
 
@@ -16,4 +17,5 @@ app.set("view engine",'ejs')
 app.use(bodyParser.json())
 app.use(express.json())
 app.use("/",homeRoute)
+app.use(express.static("public"))
 app.listen(PORT,()=>{console.log(`Server connected at port: ${PORT}`)})
