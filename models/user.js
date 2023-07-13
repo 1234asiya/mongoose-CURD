@@ -18,8 +18,10 @@ let usersSchema=new schema({
         // required: true
     },
     image:{
-        data:Buffer,
-        contentType:String
+        // data: Buffer,
+        // contentType: String
+
+       type:String,
         // required: true
 
     }

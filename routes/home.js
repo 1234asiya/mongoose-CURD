@@ -11,12 +11,11 @@ Router.post("/add", (req, res) => {
     const email = req.body.email;
     const idno = req.body.idno;
     const image = req.body.image;
-    console.log(image)
+    
     const user = new User({ firstname: firstname, lastname:lastname, email: email, idno:idno ,image:image})
     const form = new formidable.IncomingForm()
+
     console.log(user)
-    console.log(user.image)
-    
     user.save().then(() => {
         res.redirect("/")
     })
