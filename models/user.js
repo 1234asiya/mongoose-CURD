@@ -24,6 +24,11 @@ let usersSchema=new schema({
        type:String,
         // required: true
 
+    },
+    showimage:{
+        
+        data: Buffer,
+        contentType: String
     }
 })
 module.exports= mongoose.model("formdetails",usersSchema)

@@ -9,21 +9,7 @@ Router.get("/", (req, res) => {
 })
 
 
-//form upload --------------------------------------------------------->
-Router.post('/', (req, res) => {
-    const form = new formidable.IncomingForm()
-    form.parse(req)
-    form.on("fileBegin",(name,file)=>{
-        file.filepath=__dirname+"/uploadofimage/"+file.originalFilename
-    })
-    res.sendFile(__dirname+"/image.html")
 
-});
-Router.get("/form", (request, response) => {
-    response.sendFile(path.join(__dirname, "/image.html"))
-})
-
-//--------------------------------------------------------------------------------->
 
 Router.post("/add", (req, res) => {
     const firstname = req.body.firstname;
@@ -31,10 +17,19 @@ Router.post("/add", (req, res) => {
     const email = req.body.email;
     const idno = req.body.idno;
     const image = req.body.image;
-    const user = new User({ firstname: firstname, lastname: lastname, email: email, idno: idno, image: image })
+    const showimage=req.body.showimage
+    const user = new User({ firstname: firstname, lastname: lastname, email: email, idno: idno, image: image,showimage:showimage })
     const form = new formidable.IncomingForm()
 
-    console.log(user)
+
+   
+    form.parse(req)
+    form.on("fileBegin", (name, file) => {
+        file.filepath = __dirname+"/uploads"+file.originalFilename
+        console.log("file",file)
+    })
+    
+    console.log(user)  
     user.save().then(() => {
         res.redirect("/")
     })

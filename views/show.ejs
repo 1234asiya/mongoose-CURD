@@ -23,6 +23,7 @@
                 <th>Email</th>
                 <th>IdNo</th>
                 <th>image</th>
+                <th>show</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -35,7 +36,8 @@
                 <td><%- student.email %></td>
                 <td><%- student.idno %></td>
                 <td><%- student.image %></td>
-                <td>
+              <td><img src="" alt=""></td>
+                 <td>
                     <a href="/edit/<%= student._id %>">
                         <span class="blue">View</span>
                     </a>
