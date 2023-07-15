@@ -88,3 +88,7 @@ span {
 .container-2{
     display: flex;
 }
+img{
+    width:150px;
+    height:150px;
+}
