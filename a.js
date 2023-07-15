@@ -1,40 +1,3 @@
-
-  // const form = new formidable.IncomingForm()
-
-    // form.parse(req, (err, fields, file) => {
-    //     if (err) {
-    //         return res.status(400).json({ error: err })
-    //     }
-
-    //     firstname = fields.firstname;
-    //     firstname = firstname.toString();
-    //     lastname = fields.lastname;
-    //     lastname = lastname.toString();
-    //     email = fields.email;
-    //     email = email.toString();
-    //     idno = fields.idno
-    //     idno = idno.toString();
-    //     // showimage=showimage.toString()
-    //     // showimage=fields.showimage
-    //     showimage=""
-    //     const user = new User({ firstname, lastname, email, idno, image,showimage})
-    //     user.save().then(() => {
-    //         res.redirect("/")
-    //     })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    //     var image = path.join(__dirname, "public", "uploads", file.image[0].originalFilename);
-    //     form.on("fileBegin", (name, file) => {
-    //         file.filepath = __dirname + "/uploads" + file.originalFilename
-    //         console.log(filepath,44)
-
-    //     })
-
-
-
-
-
 Router.post("/add", (req, res) => {
 
     // for image
@@ -99,4 +62,14 @@ Router.post("/add", (req, res) => {
     form.on("fileBegin", (name, file) => {
         file.filepath = __dirname + "/uploads/" + file.originalFilename;
     })
-})
+})​​​
+
+
+// <!-- <td><img src="data:<%= student.image.contentType %>;base64,<%= student.image.data.toString('bae64') %>" alt=""></td> -->
+              
+{/* <td><img src="data:<%= student.image.contentType %>;base64,<%= student.image.toString('base64') %>" alt=""></td> */}
+              
+
+
+
+

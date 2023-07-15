@@ -18,17 +18,17 @@ let usersSchema=new schema({
         // required: true
     },
     image:{
-        // data: Buffer,
-        // contentType: String
+        data: Buffer,
+        contentType: String
 
-       type:String,
+    //    type:String,
         // required: true
 
     },
-    showimage:{
+    // showimage:{
         
-        data: Buffer,
-        contentType: String
-    }
+    //     data: Buffer,
+    //     contentType: String
+    // }
 })
 module.exports= mongoose.model("formdetails",usersSchema)

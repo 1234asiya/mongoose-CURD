@@ -9,30 +9,50 @@ Router.get("/", (req, res) => {
 })
 
 Router.post("/add", (req, res) => {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const email = req.body.email;
-    const idno = req.body.idno;
-    const image = req.body.image;
-    const showimage=req.body.showimage
-    const user = new User({ firstname: firstname, lastname: lastname, email: email, idno: idno, image: image,showimage:showimage })
     const form = new formidable.IncomingForm()
+    const firstname = req.body.firstname
+    const lastname = req.body.lastname
+    const email = req.body.email
+    const idno = req.body.idno
+    const image = req.body.image
+    // form.parse(req, (err, fields, file) => {
+    //     if (err) {
+    //         return res.status(400).json({ error: err })
+    //     }
+    //     firstname = fields.firstname.toString();
+    //     lastname = fields.lastname.toString()
+    //     email = fields.email.toString();
+    //     idno = fields.idno.toString();
+    //     var data = fs.readFileSync(file.image[0].filepath);
+    //     contentType = file.image[0].mimetype;
+    const user = new User({ firstname, lastname, email, idno, image });
+    form.parse(req,function(err,fields,files){
+        let oldPath=files.image[0].filepath
+        console.log(oldPath,47)
+        let newPath = path.join(__dirname, '/uploads/'
+          + files.image[0].originalFilename)
+            console.log(newPath,50)
 
-
-   
-    form.parse(req)
-    form.on("fileBegin", (name, file) => {
-        file.filepath = __dirname+"/uploads"+file.originalFilename
-        console.log("file",file)
-    })
-    
-    console.log(user)  
-    user.save().then(() => {
-        res.redirect("/")
-    })
-        .catch((err) => {
-            console.log(err)
+        let rawData=fs.readFileSync(oldPath)
+        fs.writeFile(newPath,rawData,function(err){
+            if(err){
+                console.log(err)
+            }
+            // return res.send("Successfully uploaded")
+            res.redirect("/")
         })
+    })
+
+    user.save().then(() => {
+        console.log('Data saved to mongodb successfully');
+        res.redirect("/")
+    }).catch((err) => {
+        console.log(err);
+        console.log("error happened")
+    })
+    // })
+
+
 })
 Router.get("/show", (req, res) => {
     User.find({}).then((docs) => {

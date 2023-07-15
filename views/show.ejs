@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/show-table.css">
 </head>
+
 <body>
     <div class="navbar">
         <ul>
@@ -23,36 +25,38 @@
                 <th>Email</th>
                 <th>IdNo</th>
                 <th>image</th>
-                <th>show</th>
                 <th>Operations</th>
             </tr>
         </thead>
         <tbody>
-           <% showuserdetails.forEach((student) => { %>
-            <tr>
-                <td><%- student._id %></td>
-                <td><%- student.firstname %></td>
-                <td><%- student.lastname %></td>
-                <td><%- student.email %></td>
-                <td><%- student.idno %></td>
-                <td><%- student.image %></td>
-              <td><img src="" alt=""></td>
-                 <td class="container-2">
-                    <div class="button">
-                        <a href="/edit/<%= student._id %>">
-                            <span class="blue">View</span>
-                        </a>
-                    </div>
-                  <div class="button">
-                    <a href="/delete/<%= student._id %>">
-                        <span class="pink">Delete</span>
-                    </a>
-                  </div>
-                   
-                </td>
-            </tr>
-           <% }) %>
+            <% showuserdetails.forEach((student)=> { %>
+                <tr>
+                    <td><%- student._id %></td>
+                    <td><%- student.firstname %></td>
+                    <td><%- student.lastname %></td>
+                    <td><%- student.email %></td>
+                    <td><%- student.idno %></td>
+
+                    <td><img src="data:<%- student.image.contentType%>;base64,<%- student.image.data.toString('base64') %>"
+                            alt=""/></td>
+
+                    <td class="container-2">
+                        <div class="button">
+                            <a href="/edit/<%= student._id %>">
+                                <span class="blue">View</span>
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="/delete/<%= student._id %>">
+                                <span class="pink">Delete</span>
+                            </a>
+                        </div>
+
+                    </td>
+                </tr>
+                <% }) %>
         </tbody>
     </table>
 </body>
+
 </html>
