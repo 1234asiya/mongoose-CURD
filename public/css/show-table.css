@@ -85,3 +85,6 @@ span {
     background-color: red;
     border: 1px solid black;
 }
+.container-2{
+    display: flex;
+}

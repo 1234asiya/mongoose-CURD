@@ -8,9 +8,6 @@ Router.get("/", (req, res) => {
     res.render("index")
 })
 
-
-
-
 Router.post("/add", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;

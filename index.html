@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="css/input-update.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <ul>
+            <li><a class="" href="http://localhost:9001/">Home</a></li>
+            <li><a href="/show">Show</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <form action="/add" method="post"   >
+            <div class="form">
+                <div class="title">Post Data</div>
+                <div class="input-container ic1">
+                    <input type="text" name="firstname" class="input" placeholder="Enter FirstName"
+                        class="placeholderclass">
+                    <div class="cut"></div>
+
+                </div>
+                <div class="input-container ic1">
+                    <input type="text" name="lastname" class="input" placeholder="Enter LastName"
+                        class="placeholderclass">
+                    <div class="cut"></div>
+
+                </div>
+                <div class="input-container ic2">
+                    <input type="text" name="email" class="input" placeholder="Enter Email" class="placeholderclass">
+                    <div class="cut cut-short"></div>
+
+                </div>
+                <div class="input-container ic1">
+                    <input type="text" name="idno" class="input" placeholder="Enter idno" class="placeholderclass">
+                    <div class="cut"></div>
+
+                </div>
+                <div class="input-container ic1">
+                    <!-- <input type="file" name="image" class="input" placeholder=" " class="placeholderclass" accept="image/png image/jpg">
+                    <div class="cut"></div> -->
+                    <input type="file" name="image" id="image_input" class="input" class="placeholderclass"
+                        accept="image/png image/jpg">
+                </div>
+                <div class="input-container ic1">
+                
+                    <div class="cut" name="showimage" id="display_image">
+
+                    </div>
+
+                </div>
+                <button type="submit" class="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const image_input = document.querySelector("#image_input")
+        var uploaded_image = "";
+        image_input.addEventListener("change", function () {
+            console.log(image_input.value)
+            const reader = new FileReader()
+            reader.addEventListener("load", () => {
+                uploaded_image = reader.result
+                document.querySelector("#display_image").style.backgroundImage = `url(${uploaded_image})`
+            })
+            reader.readAsDataURL(this.files[0])
+        })
+
+    </script>
+
+</body>
+
+</html>

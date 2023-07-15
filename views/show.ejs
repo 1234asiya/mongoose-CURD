@@ -37,13 +37,18 @@
                 <td><%- student.idno %></td>
                 <td><%- student.image %></td>
               <td><img src="" alt=""></td>
-                 <td>
-                    <a href="/edit/<%= student._id %>">
-                        <span class="blue">View</span>
-                    </a>
+                 <td class="container-2">
+                    <div class="button">
+                        <a href="/edit/<%= student._id %>">
+                            <span class="blue">View</span>
+                        </a>
+                    </div>
+                  <div class="button">
                     <a href="/delete/<%= student._id %>">
                         <span class="pink">Delete</span>
                     </a>
+                  </div>
+                   
                 </td>
             </tr>
            <% }) %>
