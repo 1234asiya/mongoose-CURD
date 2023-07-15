@@ -10,11 +10,11 @@ Router.get("/", (req, res) => {
 
 Router.post("/add", (req, res) => {
     const form = new formidable.IncomingForm()
-    const firstname = req.body.firstname
-    const lastname = req.body.lastname
-    const email = req.body.email
-    const idno = req.body.idno
-    const image = req.body.image
+    // const firstname = req.body.firstname
+    // const lastname = req.body.lastname
+    // const email = req.body.email
+    // const idno = req.body.idno
+    // const image = req.body.image
     // form.parse(req, (err, fields, file) => {
     //     if (err) {
     //         return res.status(400).json({ error: err })
@@ -24,14 +24,19 @@ Router.post("/add", (req, res) => {
     //     email = fields.email.toString();
     //     idno = fields.idno.toString();
     //     var data = fs.readFileSync(file.image[0].filepath);
-    //     contentType = file.image[0].mimetype;
-    const user = new User({ firstname, lastname, email, idno, image });
+    // //     contentType = file.image[0].mimetype;
+    // const user = new User({ firstname, lastname, email, idno, image });
     form.parse(req,function(err,fields,files){
-        let oldPath=files.image[0].filepath
-        console.log(oldPath,47)
-        let newPath = path.join(__dirname, '/uploads/'
-          + files.image[0].originalFilename)
-            console.log(newPath,50)
+        
+        firstname = fields.firstname.toString();
+        lastname = fields.lastname.toString()
+        email = fields.email.toString();
+        idno = fields.idno.toString();
+        image = files.image[0].originalFilename;
+
+        let oldPath=files.image[0].filepath;        
+        let newPath = path.join("E:","Programs","mongoose-CURD","public","uploads")
+            + '/' + files.image[0].originalFilename
 
         let rawData=fs.readFileSync(oldPath)
         fs.writeFile(newPath,rawData,function(err){
@@ -39,17 +44,23 @@ Router.post("/add", (req, res) => {
                 console.log(err)
             }
             // return res.send("Successfully uploaded")
-            res.redirect("/")
+            // res.redirect("/")
         })
+
+
+        const user = new User({ firstname, lastname, email, idno });
+        user.image = image;
+        user.save().then(() => {
+            console.log('Data saved to mongodb successfully');
+            res.redirect("/")
+        }).catch((err) => {
+            console.log(err);
+            console.log("error happened")
+        })
+
     })
 
-    user.save().then(() => {
-        console.log('Data saved to mongodb successfully');
-        res.redirect("/")
-    }).catch((err) => {
-        console.log(err);
-        console.log("error happened")
-    })
+    
     // })
 
 
