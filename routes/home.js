@@ -32,13 +32,13 @@ Router.post("/add", (req, res) => {
         lastname = fields.lastname.toString()
         email = fields.email.toString();
         idno = fields.idno.toString();
-        image = files.image[0].originalFilename;
+        image = Date.now() +"-" +  files.image[0].originalFilename;
 
         let oldPath=files.image[0].filepath;        
         let newPath = path.join("E:","Programs","mongoose-CURD","public","uploads")
-            + '/' + files.image[0].originalFilename
+            + '/' +Date.now()+ "-"+ files.image[0].originalFilename
 
-        let rawData=fs.readFileSync(oldPath)
+        let rawData = fs.readFileSync(oldPath)
         fs.writeFile(newPath,rawData,function(err){
             if(err){
                 console.log(err)
