@@ -93,6 +93,17 @@ Router.get("/delete/:id", (req, res) => {
         console.log("error")
     })
 })
+Router.get("/validateEmail/:email",(req,res)=>{
+    User.findOne({email:req.params.email}).then((docs)=>{
+        console.log(docs)
+        if(docs==null){
+            res.send("Invalid")
+        }
+        else{
+            res.send("Valid")
+        }
+    }).catch((err)=>{console.log(err)})
+})
 
 module.exports = Router
 

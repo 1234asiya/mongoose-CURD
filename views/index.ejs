@@ -6,10 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" href="css/input-update.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"> </script>
+    <script src="validateEmail.js"></script>
 </head>
 
 <body>
+    
+<style>
+    #emailVal{
+        display:none
+    }
 
+    #emailExist{
+        display: none;
+    }
+</style>
     <div class="navbar">
         <ul>
             <li><a class="" href="http://localhost:9001/">Home</a></li>
@@ -34,7 +45,9 @@
 
                 </div>
                 <div class="input-container ic2">
-                    <input type="text" name="email" class="input" placeholder="Enter Email" class="placeholderclass">
+                    <input type="text" name="email" class="input" placeholder="Enter Email" id="email" class="placeholderclass" onkeyup="validateEmail(event)">
+                    <div id="emailVal">Enter a valid email address</div>
+                    <div id="emailExist">This email already exists </div>
                     <div class="cut cut-short"></div>
 
                 </div>
